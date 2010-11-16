@@ -1,5 +1,8 @@
 Producer::Application.routes.draw do
-  resources :posts
+
+  resources :posts do
+    resources :comments
+  end
 
   root :to => "pages#index"
   get "pages/index"
