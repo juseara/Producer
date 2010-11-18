@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_filter :load_resources, :only => %w(new create edit update)
+
   def index
     @posts = Post.all
     respond_with @posts
@@ -6,7 +9,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    respond_with @post    
+    respond_with @post
   end
 
   def new
@@ -25,6 +28,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    params[:post][:category_ids] ||= []
+        
     @post = Post.find(params[:id])
     flash[:notice] = 'Post was successfully updated.' if @post.update_attributes(params[:post])
     respond_with @post
@@ -35,4 +40,11 @@ class PostsController < ApplicationController
     @post.destroy
     respond_with @post
   end
+
+protected
+  def load_resources
+    @categories = Category.all
+    @authors = User.all
+  end
+
 end

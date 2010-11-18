@@ -10,7 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101116222819) do
+ActiveRecord::Schema.define(:version => 20101118012110) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_posts", :id => false, :force => true do |t|
+    t.integer "post_id",     :null => false
+    t.integer "category_id", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "author"
@@ -28,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20101116222819) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "author_id"
   end
 
   create_table "users", :force => true do |t|

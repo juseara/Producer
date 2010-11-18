@@ -1,5 +1,7 @@
 Producer::Application.routes.draw do
 
+  resources :categories
+
   resources :posts do
     resources :comments
   end
