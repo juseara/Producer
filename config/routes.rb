@@ -1,8 +1,11 @@
 Producer::Application.routes.draw do
 
-  resources :categories
+  namespace :admin do 
+    resources :posts
+    resources :categories, :except => [:show]
+  end
 
-  resources :posts do
+  resources :posts, :only => [:index, :show] do
     resources :comments
   end
 

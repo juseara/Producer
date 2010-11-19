@@ -4,7 +4,9 @@ class Post < ActiveRecord::Base
   
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"
   
-  validates_presence_of :title, :body, :author
+  validates_presence_of :title, :body, :author, :permalink
+  validates_uniqueness_of :permalink
+  validates_inclusion_of :draft, :in => [true, false]  
   validates_associated :author
 
 end
