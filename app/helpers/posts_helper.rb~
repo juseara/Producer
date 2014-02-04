@@ -9,4 +9,3 @@ def comment_author(name, url="")
  name="Anonymous Coward" unless name.present?
 url.present? ? link_to(name, url, :target =>"black") : name
 end
-end

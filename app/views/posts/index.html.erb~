@@ -17,6 +17,5 @@
     <p>We'll start posting soon.</p>
   <%- end -%>
 </div>
-<div id="column2">
+<>
 <%= render "sidebar"%>
-</div>

@@ -19,7 +19,6 @@
   <%= render "comments/form", :post => @post, :comment => Comment.new %>
 </div>
 
-<div id="column2">
+
 <%= render "sidebar" %>
-</div>
 

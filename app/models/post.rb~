@@ -19,10 +19,6 @@ class Post < ActiveRecord::Base
      where("title LIKE :t OR body LIKE :t", :t => "%#{terms}%") 
 }
 
-def to_param
-"#{id}-#{slug}"
-end
-
 	protected 	
 		def generate_slug
 			self.slug = title unless slug.present?
